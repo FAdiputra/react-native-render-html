@@ -419,7 +419,7 @@ export default class HTML extends PureComponent {
         children = alteredChildren || children;
       }
       // Remove whitespaces to check if it's just a blank text
-      const strippedData = data && data.replace(/>\s</g, '>&shy; <') ;
+      const strippedData = data && data.replace(/\s/g, "");
       if (type === "text") {
         if ((!strippedData || !strippedData.length) && !allowWhitespaceNodes) {
           // This is blank, don't render an useless additional component

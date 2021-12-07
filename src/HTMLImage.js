@@ -407,9 +407,9 @@ const HTMLImageElement = class HTMLImageElement extends PureComponent {
       <ImageZoom
       enableHorizontalBounce={false}
       cropWidth={Dimensions.get('window').width}
-      cropHeight={this.state.height}
+      cropHeight={this.state.imagePhysicalHeight}
       imageWidth={Dimensions.get('window').width}
-      imageHeight={this.state.height}
+      imageHeight={this.state.imagePhysicalHeight}
     >
         <Image
           source={source}
