@@ -38,7 +38,8 @@
     "deprecated-prop-type": "^1.0.0",
     "htmlparser2": "5.0.1",
     "prop-types": "^15.7.2",
-    "stringify-entities": "^3.1.0"
+    "stringify-entities": "^3.1.0",
+    "react-native-image-pan-zoom": "2.1.11"
   },
   "peerDependencies": {
     "react": "*",
@@ -64,6 +65,7 @@
     "react": "^16.13.1",
     "react-native": "^0.63.4",
     "react-native-testing-library": "^2.2.0",
+    "react-native-image-pan-zoom": "^2.1.11",
     "react-native-webview": "^11.0.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.9.7"

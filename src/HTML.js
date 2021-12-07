@@ -199,8 +199,13 @@ export default class HTML extends PureComponent {
   }
 
   async registerDOM(props = this.props, cb) {
-    const html = props.html || (props.source ? props.source.html : null);
+    let html = props.html || (props.source ? props.source.html : null);
     const uri = props.uri || (props.source ? props.source.uri : null);
+
+    html = html.split('text-decoration').join('textDecorationLine');
+    html = html.split('&quot;').join('"');
+    html = html.split('"Times New Roman";"').join('Times New Roman;"');
+
     if (html) {
       this.setStateSafe({
         dom: html,
@@ -414,7 +419,7 @@ export default class HTML extends PureComponent {
         children = alteredChildren || children;
       }
       // Remove whitespaces to check if it's just a blank text
-      const strippedData = data && data.replace(/\s/g, "");
+      const strippedData = data && data.replace(/>\s</g, '>&shy; <') ;
       if (type === "text") {
         if ((!strippedData || !strippedData.length) && !allowWhitespaceNodes) {
           // This is blank, don't render an useless additional component

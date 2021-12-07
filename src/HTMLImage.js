@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import {
+  Dimensions,
   Image,
   View,
   Text,
@@ -7,12 +8,12 @@ import {
   TouchableHighlight,
 } from "react-native";
 import PropTypes from "prop-types";
-
-const defaultImageStyle = { resizeMode: "cover" };
+import ImageZoom from 'react-native-image-pan-zoom';
+const defaultImageStyle = { resizeMode: "contain" };
 const emptyObject = {};
 
 const styles = StyleSheet.create({
-  image: { resizeMode: "cover" },
+  image: { resizeMode: "contain" },
   errorBox: {
     borderWidth: 1,
     borderColor: "lightgray",
@@ -403,12 +404,20 @@ const HTMLImageElement = class HTMLImageElement extends PureComponent {
   renderImage(imageBoxDimensions, imageStyles) {
     const { source } = this.props;
     return (
-      <Image
-        source={source}
-        onError={() => this.setState({ error: true })}
-        style={[defaultImageStyle, imageBoxDimensions, imageStyles]}
-        testID="image-layout"
-      />
+      <ImageZoom
+      enableHorizontalBounce={false}
+      cropWidth={Dimensions.get('window').width}
+      cropHeight={this.state.height}
+      imageWidth={Dimensions.get('window').width}
+      imageHeight={this.state.height}
+    >
+        <Image
+          source={source}
+          onError={() => this.setState({ error: true })}
+          style={[defaultImageStyle, imageBoxDimensions, imageStyles]}
+          testID="image-layout"
+        />
+      </ImageZoom>
     );
   }
 
