@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import ImageZoom from 'react-native-image-pan-zoom';
-const defaultImageStyle = { resizeMode: "contain" };
+const defaultImageStyle = { resizeMode: "cover" };
 const emptyObject = {};
 
 const styles = StyleSheet.create({
-  image: { resizeMode: "contain" },
+  image: { resizeMode: "cover" },
   errorBox: {
     borderWidth: 1,
     borderColor: "lightgray",
@@ -407,9 +407,9 @@ const HTMLImageElement = class HTMLImageElement extends PureComponent {
       <ImageZoom
       enableHorizontalBounce={false}
       cropWidth={Dimensions.get('window').width}
-      cropHeight={this.state.imagePhysicalHeight}
+      cropHeight={imageBoxDimensions.imagePhysicalHeight}
       imageWidth={Dimensions.get('window').width}
-      imageHeight={this.state.imagePhysicalHeight}
+      imageHeight={imageBoxDimensions.imagePhysicalHeight}
     >
         <Image
           source={source}
