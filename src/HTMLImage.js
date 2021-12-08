@@ -403,13 +403,15 @@ const HTMLImageElement = class HTMLImageElement extends PureComponent {
 
   renderImage(imageBoxDimensions, imageStyles) {
     const { source } = this.props;
+    
     return (
       <ImageZoom
-      enableHorizontalBounce={false}
-      cropWidth={imageBoxDimensions.imagePhysicalWidth}
-      cropHeight={imageBoxDimensions.imagePhysicalHeight}
-      imageWidth={imageBoxDimensions.imagePhysicalWidth}
-      imageHeight={imageBoxDimensions.imagePhysicalHeight}
+      enableHorizontalBounce={true}
+      cropWidth={Dimensions.get('window').width}
+      cropHeight={Dimensions.get('window').height}
+      imageWidth={imageBoxDimensions.width}
+      imageHeight={imageBoxDimensions.height}
+      useNativeDriver={false}
     >
         <Image
           source={source}
